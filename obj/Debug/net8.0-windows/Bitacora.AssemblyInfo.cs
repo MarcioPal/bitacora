@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bitacora")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c729be94913d7ee6ffb2001be4046354d905ac9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bitacora")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bitacora")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

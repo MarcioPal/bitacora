@@ -1,8 +1,25 @@
 {
   "version": 2,
-  "dgSpecHash": "uBh25JC4p4V4X/E/uQEHzgenSEVmIvHI7FGLtLTOvoN6f2si47w1W2bsO2bFfAUZSBcX6+NUmAxt9qhXt4YFxg==",
+  "dgSpecHash": "6sRryj5g9Fxn6qrDl8FbQ/WMpxgo6pGPn/A4TgB3LFO8mcSDFY76usPHt4nJHjvCWcecs8gECgRzUJNdiizXxQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\marci\\OneDrive\\Escritorio\\Bitacora\\Bitacora.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\marci\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\enums.net\\4.0.1\\enums.net.4.0.1.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\extendednumerics.bigdecimal\\2025.1001.2.129\\extendednumerics.bigdecimal.2025.1001.2.129.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\materialskin.2.netcore\\2.2.1\\materialskin.2.netcore.2.2.1.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\mathnet.numerics.signed\\5.0.0\\mathnet.numerics.signed.5.0.0.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\microsoft.io.recyclablememorystream\\3.0.0\\microsoft.io.recyclablememorystream.3.0.0.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\npoi\\2.7.2\\npoi.2.7.2.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\nuget.commandline\\6.12.1\\nuget.commandline.6.12.1.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\sixlabors.fonts\\1.0.1\\sixlabors.fonts.1.0.1.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\sixlabors.imagesharp\\2.1.9\\sixlabors.imagesharp.2.1.9.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\system.security.cryptography.pkcs\\8.0.1\\system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\system.security.cryptography.xml\\8.0.2\\system.security.cryptography.xml.8.0.2.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

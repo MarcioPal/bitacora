@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -7,5 +8,23 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="misBitacoras\**" />
+    <Compile Remove="Utilities\**" />
+    <EmbeddedResource Remove="misBitacoras\**" />
+    <EmbeddedResource Remove="Utilities\**" />
+    <None Remove="misBitacoras\**" />
+    <None Remove="Utilities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialSkin.2.NetCore" Version="2.2.1" />
+    <PackageReference Include="NPOI" Version="2.7.2" />
+    <PackageReference Include="NuGet.CommandLine" Version="6.12.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>
