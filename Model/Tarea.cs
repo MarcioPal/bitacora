@@ -16,9 +16,9 @@ namespace Bitacora.Model
         public String obervaciones;
         public int horas;
         public int minutos;
-        public int dia;
+        public DateTime fecha;
 
-        public Tarea(string recurso, string tipoTarea, string banco, string modulo, string descripcion, string obervaciones, int horas, int minutos, int dia)
+        public Tarea(string recurso, string tipoTarea, string banco, string modulo, string descripcion, string obervaciones, int horas, int minutos, DateTime fecha)
         {
             this.recurso = recurso;
             this.tipoTarea = tipoTarea;
@@ -28,7 +28,7 @@ namespace Bitacora.Model
             this.obervaciones = obervaciones;
             this.horas = horas;
             this.minutos = minutos;
-            this.dia = dia;
+            this.fecha = fecha;
 
         }
 

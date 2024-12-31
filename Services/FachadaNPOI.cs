@@ -43,7 +43,7 @@ namespace Bitacora.Services
                     }
                     
 
-                    if (day == tarea.dia)
+                    if (day == tarea.fecha.Day)
                     {
 
                         desplazarFilas(sheet, rowIndex + 1);
@@ -160,8 +160,12 @@ namespace Bitacora.Services
                 if (sourceCell != null)
                 {
                     ICell targetCell = targetRow.CreateCell(i);
-                    if ((i == 0 || i == 2) && targetCell.NumericCellValue != 0)
+                    if ((i == 0 || i == 2))// && targetCell.NumericCellValue != 0 && sourceCell.NumericCellValue != 0)
                     {
+                        
+                        if (targetCell.NumericCellValue == 0 || sourceCell.NumericCellValue == 0) {
+                            targetCell.SetCellValue("");
+                        }
                         targetCell.SetCellValue(sourceCell.NumericCellValue);
                     }
                     else {
