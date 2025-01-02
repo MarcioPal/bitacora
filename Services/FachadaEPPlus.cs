@@ -82,7 +82,8 @@ namespace Bitacora.Services
                     worksheet.Cells[fromRow, 1].Value = fecha.Day;
                     worksheet.Cells[fromRow, 2].Value = calendario.mesToString(tarea.fecha.Month);
                     worksheet.Cells[fromRow, 3].Value = tarea.fecha.Year;
-                    worksheet.Cells[fromRow, 4].Value = tarea.horas;
+                    worksheet.Cells[fromRow, 4].Style.Numberformat.Format = "hh:mm:ss";
+                    worksheet.Cells[fromRow, 4].Value = new TimeSpan(tarea.horas, tarea.minutos, 0);
                     worksheet.Cells[fromRow, 5].Value = tarea.recurso;
                     worksheet.Cells[fromRow, 6].Value = tarea.banco;
                     worksheet.Cells[fromRow, 7].Value = tarea.tipoTarea;

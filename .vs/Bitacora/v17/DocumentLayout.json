@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:controllers\\bitacoracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\view\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\model\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:model\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\marci\\onedrive\\escritorio\\bitacora\\services\\calendario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Bitacora\\View\\Form1.cs",
               "RelativeDocumentMoniker": "View\\Form1.cs",
@@ -67,7 +67,8 @@
               "ViewState": "AQIAAI4AAAAAAAAAAAAAAJoAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T00:38:03.165Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -101,7 +102,7 @@
               "RelativeDocumentMoniker": "Controllers\\BitacoraController.cs",
               "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Bitacora\\Controllers\\BitacoraController.cs",
               "RelativeToolTip": "Controllers\\BitacoraController.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAawCsAAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAuwBAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-06T19:25:34.958Z",
               "EditorCaption": ""
@@ -120,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Bitacora\\View\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "View\\Form1.Designer.cs",
@@ -128,23 +129,25 @@
               "RelativeToolTip": "View\\Form1.Designer.cs",
               "ViewState": "AQIAALIAAAAAAAAAAAAwwMEAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T18:20:03.177Z"
+              "WhenOpened": "2024-12-06T18:20:03.177Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "FachadaEPPlus.cs",
               "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Bitacora\\Services\\FachadaEPPlus.cs",
               "RelativeDocumentMoniker": "Services\\FachadaEPPlus.cs",
               "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Bitacora\\Services\\FachadaEPPlus.cs",
               "RelativeToolTip": "Services\\FachadaEPPlus.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAiwBgAAAAMAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAApwBcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T22:34:50.044Z"
+              "WhenOpened": "2024-12-08T22:34:50.044Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Tarea.cs",
               "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Bitacora\\Model\\Tarea.cs",
               "RelativeDocumentMoniker": "Model\\Tarea.cs",

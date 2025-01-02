@@ -14,6 +14,13 @@ namespace Bitacora.Controllers
     {
         public void registrar(Tarea tarea, List<DateTime> rangoFechas) { 
             FachadaEPPlus obj = new FachadaEPPlus();
+
+            if (tarea.recurso == "")
+            {
+                MessageBox.Show("Debe seleccionar un valor en el campo Recurso", "Error");
+                return;
+            }
+
             if (tarea.fecha > DateTime.Now)
             {
                 MessageBox.Show("No se puede registrar tareas para una fecha posterior a la actual","Error");
@@ -25,6 +32,11 @@ namespace Bitacora.Controllers
         }
         public void visualizar(string recurso) {
 
+            if (recurso == "")
+            {
+                MessageBox.Show("Debe seleccionar un valor en el campo Recurso", "Error");
+                return;
+            }
             string[] NomApe = recurso.Split(' ');
             string Nombre = NomApe[0];
             string Apellido = NomApe[1];
@@ -32,12 +44,20 @@ namespace Bitacora.Controllers
             string Mes = new Calendario().mesToString(DateTime.Now.Month);
             string filePath = $"../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
             string rutaCompleta = Path.GetFullPath(filePath);
-
-            Process.Start(new ProcessStartInfo
+            try
             {
-                FileName = filePath,
-                UseShellExecute = true
-            });
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/c start \"\" \"{filePath}\"",
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                });
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.Message, "Error");
+
+            }
         }
     }
 }
