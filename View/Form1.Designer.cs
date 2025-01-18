@@ -52,6 +52,8 @@
             boxtipoTarea = new ComboBox();
             calendario = new MonthCalendar();
             tabControl1 = new TabControl();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            button1 = new Button();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)minutos).BeginInit();
@@ -62,6 +64,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.WhiteSmoke;
+            tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(pictureBox1);
             tabPage1.Controls.Add(boxModulo);
             tabPage1.Controls.Add(label7);
@@ -83,10 +86,11 @@
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(boxtipoTarea);
             tabPage1.Controls.Add(calendario);
-            tabPage1.Location = new Point(4, 24);
+            tabPage1.Location = new Point(4, 34);
+            tabPage1.Margin = new Padding(4, 5, 4, 5);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(888, 500);
+            tabPage1.Padding = new Padding(4, 5, 4, 5);
+            tabPage1.Size = new Size(1272, 842);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Home";
             tabPage1.Click += tabPage1_Click;
@@ -94,9 +98,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(247, 371);
+            pictureBox1.Location = new Point(351, 663);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(435, 133);
+            pictureBox1.Size = new Size(629, 199);
             pictureBox1.TabIndex = 77;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click_1;
@@ -105,35 +110,40 @@
             // 
             boxModulo.DropDownStyle = ComboBoxStyle.DropDownList;
             boxModulo.FormattingEnabled = true;
-            boxModulo.Location = new Point(328, 237);
+            boxModulo.Items.AddRange(new object[] { "Finesse", "Clientes", "Préstamos y Garantías", "Cuentas Vista (CC y CA)", "Valores", "Plazo Fijo", "Generales", "Apoyo y Seguridad", "Host to Host", "Contabilidad", "Regimenes Informativos (BCRA)" });
+            boxModulo.Location = new Point(469, 395);
+            boxModulo.Margin = new Padding(4, 5, 4, 5);
             boxModulo.Name = "boxModulo";
-            boxModulo.Size = new Size(121, 23);
+            boxModulo.Size = new Size(171, 33);
             boxModulo.TabIndex = 30;
             boxModulo.SelectedIndexChanged += boxModulo_SelectedIndexChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(601, 255);
+            label7.Location = new Point(859, 425);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(102, 15);
+            label7.Size = new Size(152, 25);
             label7.TabIndex = 76;
             label7.Text = "Tiempo (Minutos)";
             // 
             // minutos
             // 
             minutos.Increment = new decimal(new int[] { 5, 0, 0, 0 });
-            minutos.Location = new Point(603, 272);
+            minutos.Location = new Point(861, 453);
+            minutos.Margin = new Padding(4, 5, 4, 5);
             minutos.Maximum = new decimal(new int[] { 55, 0, 0, 0 });
             minutos.Name = "minutos";
-            minutos.Size = new Size(120, 23);
+            minutos.Size = new Size(171, 31);
             minutos.TabIndex = 75;
             // 
             // btnRegistrar
             // 
-            btnRegistrar.Location = new Point(328, 291);
+            btnRegistrar.Location = new Point(469, 485);
+            btnRegistrar.Margin = new Padding(4, 5, 4, 5);
             btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(121, 23);
+            btnRegistrar.Size = new Size(173, 38);
             btnRegistrar.TabIndex = 74;
             btnRegistrar.Text = "Registrar\r\n";
             btnRegistrar.UseVisualStyleBackColor = true;
@@ -141,53 +151,59 @@
             // 
             // txtObservaciones
             // 
-            txtObservaciones.Location = new Point(477, 192);
+            txtObservaciones.Location = new Point(681, 320);
+            txtObservaciones.Margin = new Padding(4, 5, 4, 5);
             txtObservaciones.Name = "txtObservaciones";
-            txtObservaciones.Size = new Size(278, 50);
+            txtObservaciones.Size = new Size(395, 81);
             txtObservaciones.TabIndex = 73;
             txtObservaciones.Text = "";
             // 
             // txtDecripTarea
             // 
-            txtDecripTarea.Location = new Point(475, 74);
+            txtDecripTarea.Location = new Point(679, 123);
+            txtDecripTarea.Margin = new Padding(4, 5, 4, 5);
             txtDecripTarea.Name = "txtDecripTarea";
-            txtDecripTarea.Size = new Size(280, 76);
+            txtDecripTarea.Size = new Size(398, 124);
             txtDecripTarea.TabIndex = 72;
             txtDecripTarea.Text = "";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(475, 255);
+            label8.Location = new Point(679, 425);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(72, 15);
+            label8.Size = new Size(108, 25);
             label8.TabIndex = 41;
             label8.Text = "Tiempo (Hs)";
             // 
             // horas
             // 
-            horas.Location = new Point(477, 272);
+            horas.Location = new Point(681, 453);
+            horas.Margin = new Padding(4, 5, 4, 5);
             horas.Maximum = new decimal(new int[] { 24, 0, 0, 0 });
             horas.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             horas.Name = "horas";
-            horas.Size = new Size(120, 23);
+            horas.Size = new Size(171, 31);
             horas.TabIndex = 40;
             horas.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // button3
             // 
-            button3.Location = new Point(102, 227);
+            button3.Location = new Point(146, 378);
+            button3.Margin = new Padding(4, 5, 4, 5);
             button3.Name = "button3";
-            button3.Size = new Size(75, 23);
+            button3.Size = new Size(107, 38);
             button3.TabIndex = 39;
             button3.Text = "Consultar";
             button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(328, 332);
+            button2.Location = new Point(469, 553);
+            button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
-            button2.Size = new Size(121, 23);
+            button2.Size = new Size(173, 38);
             button2.TabIndex = 38;
             button2.Text = "Ver Bitacora";
             button2.UseVisualStyleBackColor = true;
@@ -196,36 +212,40 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(477, 165);
+            label6.Location = new Point(681, 275);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(84, 15);
+            label6.Size = new Size(128, 25);
             label6.TabIndex = 34;
             label6.Text = "Observaciones";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(475, 53);
+            label5.Location = new Point(679, 88);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(83, 15);
+            label5.Size = new Size(126, 25);
             label5.TabIndex = 32;
             label5.Text = "Tarea realizada";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(328, 219);
+            label4.Location = new Point(469, 365);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(49, 15);
+            label4.Size = new Size(75, 25);
             label4.TabIndex = 31;
             label4.Text = "Modulo";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(328, 53);
+            label3.Location = new Point(469, 88);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(49, 15);
+            label3.Size = new Size(74, 25);
             label3.TabIndex = 29;
             label3.Text = "Recurso";
             // 
@@ -234,18 +254,20 @@
             boxRecurso.DropDownStyle = ComboBoxStyle.DropDownList;
             boxRecurso.FormattingEnabled = true;
             boxRecurso.Items.AddRange(new object[] { "Alejandra Chevillard ", "Corina Fitzpatrick", "Cecilia Gonzalez", "Carlos Romano", "Daniel Palavecino", "Daniel Nuñez", "Daniel Pizarro", "Daniel Marzellino", "Diego Bruses", "Diego Fraiese", "Fernando Sottano", "Fernando Sato", "Galo Olguin", "Gabriela Piro", "Ivan Monges", "Jannet Arribasplata", "Laura Ozcoidi", "Marcia Garcia", "Marcio Palazzo", "Miguel Ponzo", "Maximilano Primi", "Martin Ale", "Mariela Zanuttini", "Oscar Tello", "Roberto Lo Bue", "Rodrigo Peralta" });
-            boxRecurso.Location = new Point(328, 71);
+            boxRecurso.Location = new Point(469, 118);
+            boxRecurso.Margin = new Padding(4, 5, 4, 5);
             boxRecurso.Name = "boxRecurso";
-            boxRecurso.Size = new Size(121, 23);
+            boxRecurso.Size = new Size(171, 33);
             boxRecurso.TabIndex = 28;
             boxRecurso.SelectedIndexChanged += boxRecurso_SelectedIndexChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(328, 165);
+            label2.Location = new Point(469, 275);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(40, 15);
+            label2.Size = new Size(60, 25);
             label2.TabIndex = 27;
             label2.Text = "Banco";
             // 
@@ -253,17 +275,20 @@
             // 
             boxBanco.DropDownStyle = ComboBoxStyle.DropDownList;
             boxBanco.FormattingEnabled = true;
-            boxBanco.Location = new Point(328, 183);
+            boxBanco.Items.AddRange(new object[] { "SC", "SJ", "NB", "UN", "MI" });
+            boxBanco.Location = new Point(469, 305);
+            boxBanco.Margin = new Padding(4, 5, 4, 5);
             boxBanco.Name = "boxBanco";
-            boxBanco.Size = new Size(121, 23);
+            boxBanco.Size = new Size(171, 33);
             boxBanco.TabIndex = 26;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(328, 109);
+            label1.Location = new Point(469, 182);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(76, 15);
+            label1.Size = new Size(117, 25);
             label1.TabIndex = 25;
             label1.Text = "Tipo de Tarea";
             // 
@@ -271,16 +296,18 @@
             // 
             boxtipoTarea.DropDownStyle = ComboBoxStyle.DropDownList;
             boxtipoTarea.FormattingEnabled = true;
-            boxtipoTarea.Items.AddRange(new object[] { "Analisis", "Desarrollo", "Pruebas Unitarias", "Testing" });
-            boxtipoTarea.Location = new Point(328, 127);
+            boxtipoTarea.Items.AddRange(new object[] { "MC-NORM", "MC-APLIC", "DE-NORM", "DE-APLIC", "ASIST-PROD", "ASIST-TEST", "ASIST-REQ", "ASIST-TEC", "OT-OT" });
+            boxtipoTarea.Location = new Point(469, 212);
+            boxtipoTarea.Margin = new Padding(4, 5, 4, 5);
             boxtipoTarea.Name = "boxtipoTarea";
-            boxtipoTarea.Size = new Size(118, 23);
+            boxtipoTarea.Size = new Size(167, 33);
             boxtipoTarea.TabIndex = 24;
             // 
             // calendario
             // 
             calendario.BackColor = SystemColors.Window;
-            calendario.Location = new Point(34, 53);
+            calendario.Location = new Point(49, 88);
+            calendario.Margin = new Padding(13, 15, 13, 15);
             calendario.Name = "calendario";
             calendario.TabIndex = 23;
             // 
@@ -289,18 +316,30 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
+            tabControl1.Margin = new Padding(4, 5, 4, 5);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(896, 528);
+            tabControl1.Size = new Size(1280, 880);
             tabControl1.TabIndex = 22;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(469, 617);
+            button1.Name = "button1";
+            button1.Size = new Size(173, 38);
+            button1.TabIndex = 78;
+            button1.Text = "Enviar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += enviar_Click;
             // 
             // MiBitacora
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(896, 528);
+            ClientSize = new Size(1280, 880);
             Controls.Add(tabControl1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "MiBitacora";
             Text = "MiBitacora";
             tabPage1.ResumeLayout(false);
@@ -313,7 +352,6 @@
         }
 
         #endregion
-        private RadioButton radioButton1;
         private TabPage tabPage1;
         private Label label7;
         private NumericUpDown minutos;
@@ -337,5 +375,7 @@
         private MonthCalendar calendario;
         private TabControl tabControl1;
         private PictureBox pictureBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button button1;
     }
 }

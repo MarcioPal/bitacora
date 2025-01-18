@@ -2,9 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using Bitacora.Model;
-using NPOI.HSSF.UserModel;  // Para archivos .xls
-using NPOI.SS.Formula.Functions;
-using NPOI.SS.UserModel;    // Para trabajar con celdas y hojas
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+
 
 namespace Bitacora.Services
 {

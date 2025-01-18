@@ -1,4 +1,5 @@
 ﻿using Bitacora.Model;
+using Microsoft.Office.Interop.Excel;
 using NPOI.SS.Formula.Functions;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
@@ -25,8 +26,8 @@ namespace Bitacora.Services
             int Año = tarea.fecha.Year;
             string Mes = calendario.mesToString(tarea.fecha.Month);
 
-            string filePath = $"../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
-            string origen = @"../../../Resources/template.xlsx";
+            string filePath = $"../../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
+            string origen = @"../../../../Resources/template.xlsx";
 
 
             if (!File.Exists(filePath))
@@ -49,13 +50,25 @@ namespace Bitacora.Services
                     for (int i = 2; i < 100; i++)
                     {
                         Object value = worksheet.Cells[i, 1].Value;
-
+                        
                         if (value != null)
                         {
-                            if (fecha.Day <= (double)value)
+                            if (value is double)
                             {
-                                fromRow = i;
-                                break;
+                                if (fecha.Day <= (double)value)
+                                {
+                                    fromRow = i;
+                                    break;
+                                }
+                          
+                            }
+                            if (value is int)
+                            {
+                                if (fecha.Day <= (int)value)
+                                {
+                                    fromRow = i;
+                                    break;
+                                }
                             }
                         }
 
@@ -66,11 +79,23 @@ namespace Bitacora.Services
                     {
                         Object value = worksheet.Cells[i, 1].Value;
 
-                        if (value != null && (fecha.Day > (double)value))
+                        if (value is double)
                         {
-                            fromRow = i + 1;
-                            break;
+                            if (value != null && (fecha.Day > (double)value))
+                            {
+                                fromRow = i + 1;
+                                break;
+                            }
                         }
+                        if (value is int) {
+                            if (value != null && (fecha.Day > (int)value))
+                            {
+                                fromRow = i + 1;
+                                break;
+                            }
+                        }
+
+                       
 
                     }
 
@@ -101,8 +126,16 @@ namespace Bitacora.Services
 
 
                 }
-                package.Save();
+                try
+                {
+                    package.Save();
+                }
+                catch (InvalidOperationException ex) {
+                    MessageBox.Show("No se puede actualizar la bitacora mientras el archivo de excel se encuentra abierto", "Error");
+                    return;
+                }
             }
+            MessageBox.Show("La tarea se ha registrado correctamente");
             Console.WriteLine($"Archivo actualizado en {Path.GetFullPath(filePath)}");
         }
     }
