@@ -1,6 +1,5 @@
 ﻿using Bitacora.Model;
 using Bitacora.Services;
-using NPOI.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,7 +17,8 @@ namespace Bitacora.Controllers
     internal class BitacoraController
     {
 
-        public void registrar(Tarea tarea, List<DateTime> rangoFechas) { 
+        public void registrar(Tarea tarea, List<DateTime> rangoFechas)
+        {
             FachadaEPPlus obj = new FachadaEPPlus();
 
             if (tarea.recurso == "")
@@ -28,9 +28,10 @@ namespace Bitacora.Controllers
             }
 
             obj.insertarTarea(tarea, rangoFechas);
-            
+
         }
-        public void visualizar(string recurso) {
+        public void visualizar(string recurso, DateTime fecha)
+        {
 
             if (recurso == "")
             {
@@ -40,8 +41,8 @@ namespace Bitacora.Controllers
             string[] NomApe = recurso.Split(' ');
             string Nombre = NomApe[0];
             string Apellido = NomApe[1];
-            int Año = DateTime.Now.Year;
-            string Mes = new Calendario().mesToString(DateTime.Now.Month);
+            int Año = fecha.Year;
+            string Mes = new Calendario().mesToString(fecha.Month);
             string filePath = $"../../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
             string rutaCompleta = Path.GetFullPath(filePath);
             try
@@ -54,7 +55,8 @@ namespace Bitacora.Controllers
                     CreateNoWindow = true
                 });
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 MessageBox.Show(e.Message, "Error");
 
             }
@@ -129,17 +131,26 @@ namespace Bitacora.Controllers
 
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show($"No existe el archivo: {filePath}","Error");
+                MessageBox.Show($"No existe el archivo: {filePath}", "Error");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
-          
+
 
 
 
         }
 
+        public List<Tarea> leerTareas(string recurso, DateTime fecha) {
+            FachadaEPPlus obj = new FachadaEPPlus();
+            return obj.leerTareas(recurso, fecha);
+        }
+        public List<int> getBoldedDates(Tarea tarea)
+        {
+            FachadaEPPlus obj = new FachadaEPPlus();
+            return obj.getBoldedDates(tarea);
+        }
     }
 }

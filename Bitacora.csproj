@@ -8,6 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Resources\icono.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,10 @@
     <EmbeddedResource Remove="Utilities\**" />
     <None Remove="misBitacoras\**" />
     <None Remove="Utilities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\icono.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,7 +35,6 @@
 	</Reference>
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.4.6" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
-    <PackageReference Include="NPOI" Version="2.7.2" />
     <PackageReference Include="NuGet.CommandLine" Version="6.12.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

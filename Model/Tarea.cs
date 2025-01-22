@@ -32,5 +32,19 @@ namespace Bitacora.Model
 
         }
 
+        public Tarea(string recurso, string tipoTarea, string banco, string modulo, string descripcion, string obervaciones)
+        {
+            this.recurso = recurso;
+            this.tipoTarea = tipoTarea;
+            this.banco = banco;
+            this.modulo = modulo;
+            this.descripcion = descripcion;
+            this.obervaciones = obervaciones;
+
+        }
+        public Tarea(string recurso) {
+            this.recurso = recurso;
+        }
+
     }
 }
