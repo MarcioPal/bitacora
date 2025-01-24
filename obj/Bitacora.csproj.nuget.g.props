@@ -2007,12 +2007,9 @@
     </None>
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)uno.fonts.fluent\2.4.5\buildTransitive\Uno.Fonts.Fluent.props" Condition="Exists('$(NuGetPackageRoot)uno.fonts.fluent\2.4.5\buildTransitive\Uno.Fonts.Fluent.props')" />
-    <Import Project="$(NuGetPackageRoot)uno.ui\5.5.94\buildTransitive\net9.0-windows\Uno.UI.props" Condition="Exists('$(NuGetPackageRoot)uno.ui\5.5.94\buildTransitive\net9.0-windows\Uno.UI.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgUno_UI Condition=" '$(PkgUno_UI)' == '' ">C:\Users\PalazzoM\.nuget\packages\uno.ui\5.5.94</PkgUno_UI>
     <PkgNuGet_CommandLine Condition=" '$(PkgNuGet_CommandLine)' == '' ">C:\Users\PalazzoM\.nuget\packages\nuget.commandline\6.12.1</PkgNuGet_CommandLine>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\PalazzoM\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.4</PkgMicrosoft_CodeAnalysis_Analyzers>
   </PropertyGroup>

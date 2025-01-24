@@ -1,16 +1,8 @@
 ﻿using Bitacora.Model;
-using Microsoft.Office.Interop.Excel;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Bitacora.Services
 {
@@ -29,8 +21,8 @@ namespace Bitacora.Services
             int Año = tarea.fecha.Year;
             string Mes = calendario.mesToString(tarea.fecha.Month);
 
-            string filePath = $"../../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
-            string origen = @"../../../../Resources/template.xlsx";
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
+            string origen = @"./Resources/template.xlsx";
 
 
             if (!File.Exists(filePath))
@@ -182,7 +174,7 @@ namespace Bitacora.Services
             int Año = fecha.Year;
             string Mes = calendario.mesToString(fecha.Month);
             List<double> dias = new List<double>();
-            string filePath = $"../../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
 
             List<int> numbers = new List<int>();
 
@@ -226,7 +218,7 @@ namespace Bitacora.Services
             int Año = tarea.fecha.Year;
             string Mes = calendario.mesToString(tarea.fecha.Month);
             List<double> dias = new List<double>();
-            string filePath = $"../../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
 
             List<int> numbers = new List<int>();
 

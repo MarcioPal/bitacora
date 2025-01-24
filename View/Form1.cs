@@ -1,15 +1,9 @@
 using Bitacora.Controllers;
 using Bitacora.Model;
 using System.Diagnostics;
-using System.Windows.Forms;
 using System.ComponentModel;
 using Bitacora.Services;
-using Microsoft.Toolkit.Uwp.Notifications;
-using Windows.UI.Notifications;
-using System.Management.Automation;
-using Windows.Data.Xml.Dom;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Security.Cryptography;
+
 
 
 namespace Bitacora
@@ -27,7 +21,7 @@ namespace Bitacora
         {
             InitializeComponent();
             fechaElegida = calendario.SelectionStart;
-            /*
+            
             backgroundWorker1 = new BackgroundWorker
             {
                 WorkerReportsProgress = true,
@@ -38,15 +32,16 @@ namespace Bitacora
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             backgroundWorker1.RunWorkerAsync();
-            */
+            
             BitacoraController bc = new BitacoraController();
             List<int> dias = new List<int>();
             DateTime dateTime = DateTime.Now;
             FileHandler fh = new FileHandler();
             Tarea tarea = fh.getTarea();
-            tarea.fecha = DateTime.Now;
+            
             if (tarea is not null)
             {
+                tarea.fecha = DateTime.Now;
                 dias = bc.getBoldedDates(tarea);
                 //dias.Add(15);
                 //dias.Add(16);
@@ -121,45 +116,35 @@ namespace Bitacora
 
             while (true)
             {
-                string script = @"
-                Install-Module -Name BurntToast -Force -Scope CurrentUser;
-                Import-Module BurntToast;
-                New-BurntToastNotification -Text 'MiBitacora', 'No olvides registrar tus tareas diarias en la bitacora!'
-                                            -AppLogo '..\..\..\..\Resources\icono.png\';
-                 ";
-
-                // Crear un archivo temporal para almacenar el script PowerShell
-                string scriptFile = Path.GetTempFileName() + ".ps1";
-                File.WriteAllText(scriptFile, script);
-
-                // Ejecutar PowerShell como un proceso externo
-                ProcessStartInfo startInfo = new ProcessStartInfo
+                string nombre = FileHandler.getNombre();
+                if (nombre != "")
                 {
-                    FileName = "powershell.exe",
-                    Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{scriptFile}\"",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                };
-
-                using (Process process = new Process { StartInfo = startInfo })
+                    Services.Notification.enviarNotificacion($"{nombre} no olvides registrar tus tareas diarias en la bitacora!");
+                }
+                else
                 {
-                    process.Start();
-
-                    // Leer la salida
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
-
-                    process.WaitForExit();
-
-                    Console.WriteLine("Output: " + output);
-                    Console.WriteLine("Error: " + error);
-
+                    Services.Notification.enviarNotificacion($"No olvides registrar tus tareas diarias en la bitacora!");
                 }
 
-                // Eliminar el archivo temporal
-                File.Delete(scriptFile);
+                DateTime hoy = DateTime.Now;
+                int mes = hoy.Month;
+                if (hoy.Month == 2)
+                {
+                    if (hoy.Day == 28) { Services.Notification.enviarNotificacion("Recuerda enviar la Bitacora antes de que finalice el mes!"); }
+
+                }
+                else
+                {
+                    if (hoy.Month == 4 || hoy.Month == 6 || hoy.Month == 9 || hoy.Month == 11)
+                    {
+                        if (hoy.Day == 30) { Services.Notification.enviarNotificacion("Recuerda enviar la Bitacora antes de que finalice el mes!"); }
+                    }
+                    else
+                    {
+                        if (hoy.Day == 31) { Services.Notification.enviarNotificacion("Recuerda enviar la Bitacora antes de que finalice el mes!"); }
+                    }
+                }
+
                 Thread.Sleep(10800000);
             }
         }
@@ -239,6 +224,7 @@ namespace Bitacora
         private void boxRecurso_SelectedIndexChanged(object sender, EventArgs e)
         {
             calendario.RemoveAllBoldedDates();
+            calendario.UpdateBoldedDates();
             Calendario cal = new Calendario();
             List<int> dias = new List<int>();
             FileHandler fh = new FileHandler();
@@ -283,21 +269,6 @@ namespace Bitacora
             BitacoraController bc = new BitacoraController();
 
             bc.enviar(boxRecurso.Text, fechatarea.Month, fechatarea.Year);
-        }
-        private void consultar_Click(object sender, EventArgs e)
-        {
-
-            /*
-            ++consul_clicks;
-            BitacoraController bc = new BitacoraController();
-           List<Tarea> tareas = bc.leerTareas(boxRecurso.Text, calendario.SelectionStart);
-            boxRecurso.SelectedItem = tareas[consul_clicks - 1].recurso;
-            boxtipoTarea.SelectedItem = tareas[consul_clicks - 1].tipoTarea;
-            boxBanco.SelectedItem = tareas[consul_clicks - 1].banco;
-            boxModulo.SelectedItem = tareas[consul_clicks - 1].modulo;
-            txtDecripTarea.Text = tareas[consul_clicks - 1].descripcion;
-            txtObservaciones.Text = tareas[consul_clicks - 1].obervaciones;
-            */
         }
 
         private void button3_Click(object sender, EventArgs e)

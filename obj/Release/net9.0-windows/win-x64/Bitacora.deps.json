@@ -15,10 +15,8 @@
           "Microsoft.Office.Interop.Excel": "15.0.4795.1001",
           "Microsoft.Office.Interop.Outlook": "15.0.4797.1004",
           "Microsoft.PowerShell.SDK": "7.4.6",
-          "Microsoft.Toolkit.Uwp.Notifications": "7.1.3",
           "NuGet.CommandLine": "6.12.1",
           "System.Management.Automation": "7.4.6",
-          "Uno.UI": "5.5.94",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "9.0.1",
           "runtimepack.Microsoft.WindowsDesktop.App.Runtime.win-x64": "9.0.1"
         },
@@ -1393,17 +1391,6 @@
           }
         }
       },
-      "Microsoft.Toolkit.Uwp.Notifications/7.1.3": {
-        "dependencies": {
-          "System.ValueTuple": "4.5.0"
-        },
-        "runtime": {
-          "lib/net5.0/Microsoft.Toolkit.Uwp.Notifications.dll": {
-            "assemblyVersion": "7.1.0.0",
-            "fileVersion": "7.1.3.1"
-          }
-        }
-      },
       "Microsoft.Win32.Registry/4.7.0": {
         "dependencies": {
           "System.Security.AccessControl": "6.0.1",
@@ -1906,80 +1893,7 @@
           }
         }
       },
-      "System.Windows.Extensions/8.0.0": {},
-      "Uno.Diagnostics.Eventing/2.0.1": {
-        "runtime": {
-          "lib/net5.0/Uno.Diagnostics.Eventing.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          }
-        }
-      },
-      "Uno.Fonts.Fluent/2.4.5": {
-        "runtime": {
-          "lib/netstandard1.0/Uno.Fonts.Fluent.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Uno.Foundation.Logging/5.5.94": {
-        "runtime": {
-          "lib/net8.0/Uno.Foundation.Logging.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          }
-        }
-      },
-      "Uno.UI/5.5.94": {
-        "dependencies": {
-          "Uno.Diagnostics.Eventing": "2.0.1",
-          "Uno.Fonts.Fluent": "2.4.5",
-          "Uno.Foundation.Logging": "5.5.94"
-        },
-        "runtime": {
-          "lib/net9.0/Uno.Foundation.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.UI.Composition.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.UI.Dispatching.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.UI.FluentTheme.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.UI.FluentTheme.v1.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.UI.FluentTheme.v2.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.UI.Toolkit.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.UI.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.Xaml.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          },
-          "lib/net9.0/Uno.dll": {
-            "assemblyVersion": "255.255.255.255",
-            "fileVersion": "255.255.255.255"
-          }
-        }
-      }
+      "System.Windows.Extensions/8.0.0": {}
     }
   },
   "libraries": {
@@ -2284,13 +2198,6 @@
       "sha512": "sha512-GjHZBE5PHKrxPRyGujWQKwbKNjPQYds6HcAWKeV49X3KPgBfF2B1vV5uJey5UluyGQlvAO/DezL7WzEx9HlPQA==",
       "path": "microsoft.security.extensions/1.2.0",
       "hashPath": "microsoft.security.extensions.1.2.0.nupkg.sha512"
-    },
-    "Microsoft.Toolkit.Uwp.Notifications/7.1.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-A1dglAzb24gjehmb7DwGd07mfyZ1gacAK7ObE0KwDlRc3mayH2QW7cSOy3TkkyELjLg19OQBuhPOj4SpXET9lg==",
-      "path": "microsoft.toolkit.uwp.notifications/7.1.3",
-      "hashPath": "microsoft.toolkit.uwp.notifications.7.1.3.nupkg.sha512"
     },
     "Microsoft.Win32.Registry/4.7.0": {
       "type": "package",
@@ -2760,34 +2667,6 @@
       "sha512": "sha512-Obg3a90MkOw9mYKxrardLpY2u0axDMrSmy4JCdq2cYbelM2cUwmUir5Bomvd1yxmPL9h5LVHU1tuKBZpUjfASg==",
       "path": "system.windows.extensions/8.0.0",
       "hashPath": "system.windows.extensions.8.0.0.nupkg.sha512"
-    },
-    "Uno.Diagnostics.Eventing/2.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Hd03em+Bga+w+ljCtiyc+713PQDtCB0Qkw3sBggvXXdDB2URwEc3N4TnM3vFeXpmHHZGM7dN7D8qxfiGoEEHzw==",
-      "path": "uno.diagnostics.eventing/2.0.1",
-      "hashPath": "uno.diagnostics.eventing.2.0.1.nupkg.sha512"
-    },
-    "Uno.Fonts.Fluent/2.4.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-CdwmtiYM59EXtjSZEnLEd08OZHe8cgI2bd6cHF+ugVXaD4EbXKGGIM5KtmdSrP54OBXPHe3tQ4H1uFmiTKYtTg==",
-      "path": "uno.fonts.fluent/2.4.5",
-      "hashPath": "uno.fonts.fluent.2.4.5.nupkg.sha512"
-    },
-    "Uno.Foundation.Logging/5.5.94": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-k6LQQOeZuT9QDbp4UpfyPOO3+hkWkYj+CUXpCTIw678WPDi/nnpE1iCq/WSh/aR8Udiavt8D6z9TSfdTfBf5Gg==",
-      "path": "uno.foundation.logging/5.5.94",
-      "hashPath": "uno.foundation.logging.5.5.94.nupkg.sha512"
-    },
-    "Uno.UI/5.5.94": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-8gFdixr3AacERVkKQN+rb6aK0eoXoYBVrCJ18Ef8YkcEagiyzj04WrqSXgOhbOvLSpTaAWDFysZaqiCG+sT2UQ==",
-      "path": "uno.ui/5.5.94",
-      "hashPath": "uno.ui.5.5.94.nupkg.sha512"
     }
   },
   "runtimes": {

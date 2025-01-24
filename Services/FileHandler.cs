@@ -9,7 +9,7 @@ namespace Bitacora.Services
 {
     internal class FileHandler
     {
-
+        public static string filePath = $"./Resources/bck.txt";
         public void save(Tarea tarea)
         {
             // Ruta del archivo CSV
@@ -20,8 +20,6 @@ namespace Bitacora.Services
             int Año = tarea.fecha.Year;
             string Mes = calendario.mesToString(tarea.fecha.Month);
             List<double> dias = new List<double>();
-            string filePath = $"../../../../misBitacoras/bck.txt";
-
 
 
             // Crear y escribir el archivo CSV
@@ -33,13 +31,13 @@ namespace Bitacora.Services
         }
 
         public Tarea getTarea() {
-            String path = "../../../../misBitacoras/bck.txt";
+
             Tarea tarea = null;
-            if (File.Exists(path))
+            if (File.Exists(filePath))
             {
-                if (new FileInfo(path).Length > 0)
+                if (new FileInfo(filePath).Length > 0)
                 {
-                    using (var reader = new StreamReader(path))
+                    using (var reader = new StreamReader(filePath))
                     {
                         while (!reader.EndOfStream)
                         {
@@ -67,12 +65,11 @@ namespace Bitacora.Services
         
         public void cargarTarea(ComboBox recurso, ComboBox tipoTarea, ComboBox banco, ComboBox modulo,RichTextBox txtDesc, RichTextBox txtObser, NumericUpDown horas, NumericUpDown minutos,Tarea tarea)
         {
-            String path = "../../../../misBitacoras/bck.txt";
-            if (File.Exists(path))
+            if (File.Exists(filePath))
             {
-                if (new FileInfo(path).Length > 0)
+                if (new FileInfo(filePath).Length > 0)
                 {
-                    using (var reader = new StreamReader(path))
+                    using (var reader = new StreamReader(filePath))
                     {
                         while (!reader.EndOfStream)
                         {
@@ -95,6 +92,36 @@ namespace Bitacora.Services
                     }
                 }
             }
+
+        }
+
+        public static string getNombre()
+        {
+            String path = "./Resources/bck.txt";
+            string nombre = "";
+            if (File.Exists(path))
+            {
+                if (new FileInfo(path).Length > 0)
+                {
+                    using (var reader = new StreamReader(path))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            // Leer línea por línea
+                            var line = reader.ReadLine();
+                            // Dividir la línea por el delimitador (coma en este caso)
+                            var fields = line.Split(';');
+                            string[] recurso = fields[0].Split(" ");
+                            nombre = recurso[0];
+
+
+
+
+                        }
+                    }
+                }
+            }
+            return nombre;
 
         }
     }

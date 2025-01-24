@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Bitacora": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\publish"
     }
   }
 }
