@@ -13,18 +13,18 @@ namespace Bitacora.Services
 {
     internal class FachadaNPOI
     {
+        public static string origen = @"../misBitacoras/template.xls";
         public void insertarTarea(Tarea tarea, List<DateTime> rangoFechas)
         {
 
-            Calendario calendario = new Calendario();
             string[] rec = tarea.recurso.Split(' ');
             string Nombre = rec[0];
             string Apellido = rec[1];
             int Año = tarea.fecha.Year;
-            string Mes = calendario.mesToString(tarea.fecha.Month);
+            string Mes = Calendario.mesToString(tarea.fecha.Month);
 
             string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
-            string origen = @"../misBitacoras/template.xls";
+            
 
             if (!File.Exists(filePath))
             {
@@ -37,46 +37,47 @@ namespace Bitacora.Services
                     HSSFWorkbook workbook = new HSSFWorkbook(fsRead);
                     ISheet sheet = workbook.GetSheetAt(0);
 
-
+                    bool hayRegistros = false;
                     foreach (DateTime fecha in rangoFechas)
                     {
-                        bool hayRegistros = false;
                         int desde = 1;
                         for (int rowIndex = 1; rowIndex <= 100; rowIndex++)
                         {
+                            
                             IRow fila = sheet.GetRow(rowIndex) ?? sheet.CreateRow(rowIndex);
-                            fila.Height = sheet.GetRow(rowIndex - 1).Height; // Copiar la altura de la fila
+                            //fila.Height = sheet.GetRow(rowIndex - 1).Height; // Copiar la altura de la fila
                             ICell? celda = fila.GetCell(0);
                             if (celda is not null && celda.CellType == CellType.Numeric)
                             {
                                 double dia = fila.GetCell(0).NumericCellValue;
                                 hayRegistros = true;
-                                if (dia != 0 && tarea.fecha.Day > dia)
+                                if (dia != 0 && fecha.Day > dia)
                                 {
                                     desde = rowIndex + 1;
                                 }
                                 else
                                 {
-                                    if (dia == tarea.fecha.Day)
+                                    if (dia == fecha.Day)
                                     {
                                         desde = rowIndex;
                                         break;
                                     }
                                 }
                             }
-
+                            Debug.WriteLine(fecha + " " + desde);
 
                         }
 
                         if (!hayRegistros)
                         {
-                            grabarFila(workbook, sheet, tarea, 1);
+                            grabarFila(workbook, sheet, tarea, 1,fecha);
                         }
                         else
                         {
                             sheet.ShiftRows(desde, sheet.LastRowNum, 1);
                             //desplazarFilas(sheet, desde);
-                            grabarFila(workbook, sheet, tarea, desde);
+                            Debug.WriteLine("NPOI78: "+fecha);
+                            grabarFila(workbook, sheet, tarea, desde, fecha);
                         }
                         // Guardar los cambios en el archivo Excel
                         using (FileStream fsWrite = new FileStream(filePath, FileMode.Open, FileAccess.Write))
@@ -88,7 +89,8 @@ namespace Bitacora.Services
 
                         }
                     }
-                } // El 'FileStream' se cierra automáticamente aquí
+                }
+                MessageBox.Show("La tarea se ha registrado correctamente");
             }
             catch (System.IO.IOException ex)
             {
@@ -96,63 +98,69 @@ namespace Bitacora.Services
                 insertarTarea(tarea, rangoFechas);
                 return;
             }
-
         }
 
-        public string mesToString(int number)
+        public List<Tarea> leerTareas(string rec, DateTime fecha)
         {
-            switch (number)
+            string[] recurso = rec.Split(' ');
+            string Nombre = recurso[0];
+            string Apellido = recurso[1];
+            int Año = fecha.Year;
+            string Mes = Calendario.mesToString(fecha.Month);
+            List<double> dias = new List<double>();
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
+
+            List<int> numbers = new List<int>();
+            List<Tarea> tareas = new List<Tarea>();
+
+            try
             {
-                case 1: return "Enero";
-                case 2: return "Febrero";
-                case 3: return "Marzo";
-                case 4: return "Abril";
-                case 5: return "Mayo";
-                case 6: return "Junio";
-                case 7: return "Julio";
-                case 8: return "Agosto";
-                case 9: return "Septiembre";
-                case 10: return "Octubre";
-                case 11: return "Noviembre";
-                case 12: return "Diciembre";
-                default: throw new Exception("Numero de mes invalido");
-            }
-        }
-
-        public void desplazarFilas(ISheet sheet, int index) {
-            int rowIndexToInsert = index; // Índice de fila donde quieres insertar (0 basado)
-            int lastRowNum = sheet.LastRowNum; // Último número de fila en la hoja
-
-
-
-            // Mover filas hacia abajo
-            for (int i = 100; i >= rowIndexToInsert; i--)
-            {
-                IRow sourceRow = sheet.GetRow(i);
-                IRow targetRow = sheet.CreateRow(i + 1);
-                // IRow targetRow = sheet.GetRow(i+1);
-
-                if (sourceRow != null)
+                using (FileStream fsRead = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    ICell dia = sourceRow.GetCell(0);
-                    if (dia != null && dia.CellType == CellType.Numeric && dia.NumericCellValue !=0)
+                    HSSFWorkbook workbook = new HSSFWorkbook(fsRead);
+                    ISheet sheet = workbook.GetSheetAt(0);
+
+                    for (int i = 1; i <= 100; i++) // Asume que la primera fila contiene datos
                     {
-                        //IRow targetRow = sheet.GetRow(i + 1);
-                        // sourceRow.CopyRowTo(i+1);
-                        
-                        CopyRow(sourceRow, targetRow);
-                        
+                        IRow row = sheet.GetRow(i);
+                        ICell dia = row.GetCell(0);//.NumericCellValue;
+
+                        if (dia != null)
+                        {
+                            if (dia.NumericCellValue == fecha.Day)
+                            {
+                                tareas.Add(new Tarea(row.GetCell(4).StringCellValue,
+                                                     row.GetCell(6).StringCellValue,
+                                                     row.GetCell(5).StringCellValue,
+                                                     row.GetCell(8).StringCellValue,
+                                                     row.GetCell(7).StringCellValue,
+                                                     row.GetCell(9).StringCellValue,
+                                                     row.GetCell(3).DateCellValue.Value.Hour,
+                                                     row.GetCell(3).DateCellValue.Value.Minute,
+                                                     row.GetCell(3).DateCellValue.Value));
+                            }
+                        }
                     }
-                    MessageBox.Show("dia: " + targetRow.GetCell(0).ToString());
                 }
-                
             }
+            catch (FileNotFoundException ex)
+            {
+               
+
+            }
+            catch(System.IO.IOException ex)
+            {
+                FileHandler.cerrarInstancia($"Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls");
+                return leerTareas(rec,fecha);
+            }
+            return tareas;
+
         }
 
-        public void grabarFila(HSSFWorkbook workbook, ISheet sheet, Tarea tarea, int rowNum)
+        public void grabarFila(HSSFWorkbook workbook, ISheet sheet, Tarea tarea, int rowNum, DateTime fecha)
         {
             IRow row = sheet.CreateRow(rowNum);
-
+            Debug.WriteLine($"grabar {fecha.Day} {rowNum}");
             // Crear celdas
             ICell dia = row.CreateCell(0);
             ICell mes = row.CreateCell(1);
@@ -172,6 +180,7 @@ namespace Bitacora.Services
 
             // Crear estilo normal
             ICellStyle estiloNormal = workbook.CreateCellStyle();
+            estiloNormal.WrapText = true;
             estiloNormal.SetFont(arialNormal);
             estiloNormal.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
             estiloNormal.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -213,8 +222,8 @@ namespace Bitacora.Services
             recurso.CellStyle = estiloBold; // Aplicar estilo en negrita
             modulo.CellStyle = estiloBold; // Aplicar estilo en negrita
 
-            dia.SetCellValue(tarea.fecha.Day);
-            mes.SetCellValue(mesToString(tarea.fecha.Month));
+            dia.SetCellValue(fecha.Day);
+            mes.SetCellValue(Calendario.mesToString(tarea.fecha.Month));
             anio.SetCellValue(tarea.fecha.Year);
 
             // Configurar formato para el campo tiempo
@@ -242,6 +251,7 @@ namespace Bitacora.Services
             tipoTarea.SetCellValue(tarea.tipoTarea);
             descripcion.SetCellValue(tarea.descripcion);
             observaciones.SetCellValue(tarea.obervaciones);
+
         }
 
 
@@ -270,9 +280,55 @@ namespace Bitacora.Services
             }
         }
 
-        public void getLastElementIndex(ISheet sheet) { 
-            
-        }
+        public List<int> getBoldedDates(Tarea tarea)
+        {
+            string[] recurso = tarea.recurso.Split(' ');
+            string Nombre = recurso[0];
+            string Apellido = recurso[1];
+            int Año = tarea.fecha.Year;
+            string Mes = Calendario.mesToString(tarea.fecha.Month);
+            List<double> dias = new List<double>();
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
 
+            List<int> numbers = new List<int>();
+
+            try
+            {
+                using (FileStream fsRead = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    HSSFWorkbook workbook = new HSSFWorkbook(fsRead);
+                    ISheet sheet = workbook.GetSheetAt(0);
+
+                    for (int i = 1; i <= 100; i++) // Asume que la primera fila contiene datos
+                    {
+                        IRow? row = sheet.GetRow(i) ?? null;
+                        ICell dia = null;
+                        if (row is not null) {
+                            dia = row.GetCell(0);
+                        }
+
+                        if (dia != null)
+                        {
+                            numbers.Add((int)dia.NumericCellValue);
+
+                        }
+                    }
+                }
+            }
+            catch (FileNotFoundException ex) {
+                File.Copy(origen, filePath, overwrite: true);
+            }
+            catch (System.IO.IOException ex)
+            {
+                FileHandler.cerrarInstancia($"Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls");
+                getBoldedDates(tarea);
+            }
+            catch (System.NullReferenceException e)
+            {
+                Debug.WriteLine(e.Message);
+
+            }
+            return numbers;
+        }
     }
 }

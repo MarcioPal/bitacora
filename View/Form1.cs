@@ -87,8 +87,8 @@ namespace Bitacora
                 Debug.WriteLine(dia);
 
             }
-            Debug.WriteLine(startDate);
-            Debug.WriteLine(endDate);
+           // Debug.WriteLine(startDate);
+            //Debug.WriteLine(endDate);
             bc.registrar(tarea, rangoFechas);
 
             //Marca en negrita las fechas registradas
@@ -98,6 +98,10 @@ namespace Bitacora
                 calendario.AddBoldedDate(fecha);
                 calendario.UpdateBoldedDates();
             }
+            txtDecripTarea.Text = "";
+            txtObservaciones.Text = "";
+            horas.Value = 1;
+            minutos.Value = 0;  
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -225,7 +229,6 @@ namespace Bitacora
         {
             calendario.RemoveAllBoldedDates();
             calendario.UpdateBoldedDates();
-            Calendario cal = new Calendario();
             List<int> dias = new List<int>();
             FileHandler fh = new FileHandler();
             BitacoraController bc = new BitacoraController();
@@ -234,16 +237,19 @@ namespace Bitacora
             string Nombre = recurso[0];
             string Apellido = recurso[1];
             tarea.fecha = DateTime.Now;
-            bool existe = File.Exists($"../../../../misBitacoras/Bitacora-{Apellido}-{Nombre}-{cal.mesToString(DateTime.Now.Month)}-{DateTime.Now.Year}.xlsx");
+            bool existe = File.Exists($"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Calendario.mesToString(DateTime.Now.Month)}-{DateTime.Now.Year}.xls");
 
             try
             {
-                dias = bc.getBoldedDates(tarea);
-                for (int i = 0; i < dias.Count; i++)
+                if (existe)
                 {
-                    DateOnly fecha = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, dias[i]);
-                    calendario.AddBoldedDate(fecha.ToDateTime(TimeOnly.MinValue)); // Convierte a DateTime para usar con el calendario
-                    calendario.UpdateBoldedDates();
+                    dias = bc.getBoldedDates(tarea);
+                    for (int i = 0; i < dias.Count; i++)
+                    {
+                        DateOnly fecha = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, dias[i]);
+                        calendario.AddBoldedDate(fecha.ToDateTime(TimeOnly.MinValue)); // Convierte a DateTime para usar con el calendario
+                        calendario.UpdateBoldedDates();
+                    }
                 }
             }
             catch (IndexOutOfRangeException ex)
@@ -287,6 +293,8 @@ namespace Bitacora
                 boxModulo.SelectedItem = tareas[consul_clicks - 1].modulo;
                 txtDecripTarea.Text = tareas[consul_clicks - 1].descripcion;
                 txtObservaciones.Text = tareas[consul_clicks - 1].obervaciones;
+                horas.Value = tareas[consul_clicks - 1].horas;
+                minutos.Value = tareas[consul_clicks - 1].minutos;
             }
             catch (System.ArgumentOutOfRangeException ex) {
                 MessageBox.Show("No hay tareas registradas para la fecha seleccionada.","Error");

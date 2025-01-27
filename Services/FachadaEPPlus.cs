@@ -14,12 +14,11 @@ namespace Bitacora.Services
             // Habilitar licencia no comercial
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            Calendario calendario = new Calendario();
             string[] recurso = tarea.recurso.Split(' ');
             string Nombre = recurso[0];
             string Apellido = recurso[1];
             int Año = tarea.fecha.Year;
-            string Mes = calendario.mesToString(tarea.fecha.Month);
+            string Mes = Calendario.mesToString(tarea.fecha.Month);
 
             string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
             string origen = @"./Resources/template.xlsx";
@@ -103,7 +102,7 @@ namespace Bitacora.Services
 
                         worksheet.InsertRow(fromRow, 1);
                         worksheet.Cells[fromRow, 1].Value = fecha.Day;
-                        worksheet.Cells[fromRow, 2].Value = calendario.mesToString(tarea.fecha.Month);
+                        worksheet.Cells[fromRow, 2].Value = Calendario.mesToString(tarea.fecha.Month);
                         worksheet.Cells[fromRow, 3].Value = tarea.fecha.Year;
                         worksheet.Cells[fromRow, 4].Style.Numberformat.Format = "hh:mm:ss";
                         worksheet.Cells[fromRow, 4].Value = new TimeSpan(tarea.horas, tarea.minutos, 0);
@@ -167,12 +166,11 @@ namespace Bitacora.Services
         public List<Tarea> leerTareas(string rec, DateTime fecha)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            Calendario calendario = new Calendario();
             string[] recurso = rec.Split(' ');
             string Nombre = recurso[0];
             string Apellido = recurso[1];
             int Año = fecha.Year;
-            string Mes = calendario.mesToString(fecha.Month);
+            string Mes = Calendario.mesToString(fecha.Month);
             List<double> dias = new List<double>();
             string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
 
@@ -211,12 +209,11 @@ namespace Bitacora.Services
         {
             // Habilitar licencia no comercial
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            Calendario calendario = new Calendario();
             string[] recurso = tarea.recurso.Split(' ');
             string Nombre = recurso[0];
             string Apellido = recurso[1];
             int Año = tarea.fecha.Year;
-            string Mes = calendario.mesToString(tarea.fecha.Month);
+            string Mes = Calendario.mesToString(tarea.fecha.Month);
             List<double> dias = new List<double>();
             string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
 

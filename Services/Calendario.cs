@@ -9,7 +9,7 @@ namespace Bitacora.Services
     internal class Calendario
     {
 
-        public string mesToString(int numero)
+        public static string mesToString(int numero)
         {
             switch (numero)
             {

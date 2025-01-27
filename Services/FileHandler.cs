@@ -14,12 +14,11 @@ namespace Bitacora.Services
         public void save(Tarea tarea)
         {
             // Ruta del archivo CSV
-            Calendario calendario = new Calendario();
             string[] recurso = tarea.recurso.Split(' ');
             string Nombre = recurso[0];
             string Apellido = recurso[1];
             int Año = tarea.fecha.Year;
-            string Mes = calendario.mesToString(tarea.fecha.Month);
+            string Mes = Calendario.mesToString(tarea.fecha.Month);
             List<double> dias = new List<double>();
 
 
@@ -84,8 +83,8 @@ namespace Bitacora.Services
                             tipoTarea.SelectedItem = fields[1];
                             banco.SelectedItem = fields[2];
                             modulo.SelectedItem = fields[3];
-                            txtDesc.Text = fields[4];
-                            txtObser.Text = fields[5];
+                            //txtDesc.Text = fields[4];
+                           // txtObser.Text = fields[5];
    
 
                             

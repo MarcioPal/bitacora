@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\services\\fachadanpoi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\fachadanpoi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\services\\filehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\filehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\services\\fachadanpoi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\fachadanpoi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\controllers\\bitacoracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:controllers\\bitacoracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\services\\calendario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\calendario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\model\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:model\\tarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:view\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|solutionrelative:services\\fachadaepplus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29C8ED6D-2EC7-45E4-BB68-1F0831160925}|Bitacora.csproj|c:\\users\\palazzom\\onedrive - unisys\\desktop\\bitacora\\bitacora.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
@@ -142,20 +158,69 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\View\\Form1.cs",
+              "RelativeDocumentMoniker": "View\\Form1.cs",
+              "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\View\\Form1.cs [Design]",
+              "RelativeToolTip": "View\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T14:36:43.672Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\View\\Form1.cs",
+              "RelativeDocumentMoniker": "View\\Form1.cs",
+              "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\View\\Form1.cs",
+              "RelativeToolTip": "View\\Form1.cs",
+              "ViewState": "AgIAAPEAAAAAAAAAAAAswPgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T12:38:02.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Calendario.cs",
+              "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\Calendario.cs",
+              "RelativeDocumentMoniker": "Services\\Calendario.cs",
+              "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\Calendario.cs",
+              "RelativeToolTip": "Services\\Calendario.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T12:22:11.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Tarea.cs",
+              "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Model\\Tarea.cs",
+              "RelativeDocumentMoniker": "Model\\Tarea.cs",
+              "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Model\\Tarea.cs",
+              "RelativeToolTip": "Model\\Tarea.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAA3wC4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T12:16:07.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "FileHandler.cs",
               "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\FileHandler.cs",
               "RelativeDocumentMoniker": "Services\\FileHandler.cs",
               "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\FileHandler.cs",
               "RelativeToolTip": "Services\\FileHandler.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAqwGEAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAA+wC8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-27T02:37:34.828Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Bitacora",
               "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Bitacora.csproj",
               "RelativeDocumentMoniker": "Bitacora.csproj",
@@ -172,33 +237,33 @@
               "RelativeDocumentMoniker": "Controllers\\BitacoraController.cs",
               "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Controllers\\BitacoraController.cs",
               "RelativeToolTip": "Controllers\\BitacoraController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAwwDEAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAgwJsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T14:14:39.225Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "FachadaEPPlus.cs",
               "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\FachadaEPPlus.cs",
               "RelativeDocumentMoniker": "Services\\FachadaEPPlus.cs",
               "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\FachadaEPPlus.cs",
               "RelativeToolTip": "Services\\FachadaEPPlus.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAAAJcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANUAAAAAAAAAAAAwwOUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T12:33:21.519Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "FachadaNPOI.cs",
               "DocumentMoniker": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\FachadaNPOI.cs",
               "RelativeDocumentMoniker": "Services\\FachadaNPOI.cs",
               "ToolTip": "C:\\Users\\PalazzoM\\OneDrive - Unisys\\Desktop\\bitacora\\Services\\FachadaNPOI.cs",
               "RelativeToolTip": "Services\\FachadaNPOI.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAuwF4AAABaAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAiwEsBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T12:28:58.289Z",
               "EditorCaption": ""
