@@ -1,6 +1,7 @@
 ﻿using Bitacora.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,6 +94,21 @@ namespace Bitacora.Services
                 }
             }
 
+        }
+        public static void cerrarInstancia(string name)
+        {
+
+            //string excelFileName = "Bitacora-Palazzo-Marcio-Enero-2025.xlsx";
+
+            foreach (var process in Process.GetProcessesByName("EXCEL"))
+            {
+                // Opcional: Identificar la instancia basada en criterios adicionales
+                if (process.MainWindowTitle.Contains(name))
+                {
+                    process.CloseMainWindow(); // Forzar cierre
+                    Console.WriteLine($"Instancia cerrada: {process.MainWindowTitle}");
+                }
+            }
         }
 
         public static string getNombre()

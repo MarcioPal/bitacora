@@ -30,6 +30,7 @@
     <PackageReference Include="MaterialSkin.2.NetCore" Version="2.2.1" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
     <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1004" />
+    <PackageReference Include="NPOI" Version="2.7.2" />
 	<Reference Include="Microsoft.Office.Interop.Outlook">
 	    <EmbedInteropTypes>True</EmbedInteropTypes>
 	</Reference>

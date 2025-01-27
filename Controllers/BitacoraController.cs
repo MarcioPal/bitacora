@@ -19,8 +19,8 @@ namespace Bitacora.Controllers
 
         public void registrar(Tarea tarea, List<DateTime> rangoFechas)
         {
-            FachadaEPPlus obj = new FachadaEPPlus();
-
+            //FachadaEPPlus obj = new FachadaEPPlus();
+            FachadaNPOI obj = new FachadaNPOI();
             if (tarea.recurso == "")
             {
                 MessageBox.Show("Debe seleccionar un valor en el campo Recurso", "Error");
@@ -43,7 +43,7 @@ namespace Bitacora.Controllers
             string Apellido = NomApe[1];
             int Año = fecha.Year;
             string Mes = new Calendario().mesToString(fecha.Month);
-            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx";
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
             string rutaCompleta = Path.GetFullPath(filePath);
             try
             {
@@ -73,7 +73,7 @@ namespace Bitacora.Controllers
             string Nombre = NomApe[0];
             string Apellido = NomApe[1];
             string Mes = new Calendario().mesToString(month);
-            string filePath = Path.GetFullPath($"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xlsx");
+            string filePath = Path.GetFullPath($"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls");
             // string filePath = Path.GetFullPath(@"./Bitacora-Palazzo-Marcio-Enero-2025.xlsx");
             Debug.WriteLine(filePath);
             Debug.WriteLine(Directory.GetCurrentDirectory());
