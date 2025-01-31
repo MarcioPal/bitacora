@@ -1,0 +1,26 @@
+# Ignore compiled files
+*.exe
+*.dll
+*.class
+*.o
+*.out
+*.zip
+
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore dependencies
+node_modules/
+bin/
+obj/
+
+# Ignore environment-specific files
+.env
+./publish
+./misBitacoras
+./MiBitacora
