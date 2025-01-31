@@ -11,8 +11,9 @@ namespace Bitacora
     public partial class MiBitacora : Form
     {
         public static int consul_clicks = 0;
-        public static DateTime fechaElegida; 
-        List<Tarea> tareas = new List<Tarea>();
+        public static DateTime fechaElegida;
+        public static int fila_actual = -1;
+        public BitacoraController bc = new BitacoraController();    
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         internal BitacoraController BitacoraController { get; private set; }
@@ -21,7 +22,7 @@ namespace Bitacora
         {
             InitializeComponent();
             fechaElegida = calendario.SelectionStart;
-            
+
             backgroundWorker1 = new BackgroundWorker
             {
                 WorkerReportsProgress = true,
@@ -32,17 +33,23 @@ namespace Bitacora
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             backgroundWorker1.RunWorkerAsync();
-            
-            BitacoraController bc = new BitacoraController();
+
+            //BitacoraController bc = new BitacoraController();
             List<int> dias = new List<int>();
             DateTime dateTime = DateTime.Now;
             FileHandler fh = new FileHandler();
             Tarea tarea = fh.getTarea();
-            
+
             if (tarea is not null)
             {
+                string Apellido = tarea.recurso.Split(' ')[1];
+                string Nombre = tarea.recurso.Split(' ')[0];
+                string Mes = Calendario.mesToString(DateTime.Now.Month);
+                int Año = DateTime.Now.Year;
+
+                string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
                 tarea.fecha = DateTime.Now;
-                dias = bc.getBoldedDates(tarea);
+                dias = bc.getBoldedDates(filePath);
                 //dias.Add(15);
                 //dias.Add(16);
                 for (int i = 0; i < dias.Count; i++)
@@ -87,7 +94,7 @@ namespace Bitacora
                 Debug.WriteLine(dia);
 
             }
-           // Debug.WriteLine(startDate);
+            // Debug.WriteLine(startDate);
             //Debug.WriteLine(endDate);
             bc.registrar(tarea, rangoFechas);
 
@@ -101,7 +108,7 @@ namespace Bitacora
             txtDecripTarea.Text = "";
             txtObservaciones.Text = "";
             horas.Value = 1;
-            minutos.Value = 0;  
+            minutos.Value = 0;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -237,13 +244,14 @@ namespace Bitacora
             string Nombre = recurso[0];
             string Apellido = recurso[1];
             tarea.fecha = DateTime.Now;
-            bool existe = File.Exists($"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Calendario.mesToString(DateTime.Now.Month)}-{DateTime.Now.Year}.xls");
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Calendario.mesToString(DateTime.Now.Month)}-{DateTime.Now.Year}.xls";
+            bool existe = File.Exists(filePath);
 
             try
             {
                 if (existe)
                 {
-                    dias = bc.getBoldedDates(tarea);
+                    dias = bc.getBoldedDates(filePath);
                     for (int i = 0; i < dias.Count; i++)
                     {
                         DateOnly fecha = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, dias[i]);
@@ -277,11 +285,11 @@ namespace Bitacora
             bc.enviar(boxRecurso.Text, fechatarea.Month, fechatarea.Year);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnConsultar_Click(object sender, EventArgs e)
         {
 
             consul_clicks += 1;
-            BitacoraController bc = new BitacoraController();
+           // BitacoraController bc = new BitacoraController();
             List<Tarea> tareas = bc.leerTareas(boxRecurso.Text, calendario.SelectionStart);
             if (consul_clicks > tareas.Count) { consul_clicks = 1; }
 
@@ -295,11 +303,51 @@ namespace Bitacora
                 txtObservaciones.Text = tareas[consul_clicks - 1].obervaciones;
                 horas.Value = tareas[consul_clicks - 1].horas;
                 minutos.Value = tareas[consul_clicks - 1].minutos;
+                fila_actual = tareas[consul_clicks - 1].nroFila;
             }
-            catch (System.ArgumentOutOfRangeException ex) {
-                MessageBox.Show("No hay tareas registradas para la fecha seleccionada.","Error");
+            catch (System.ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("No hay tareas registradas para la fecha seleccionada.", "Error");
             }
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine($"fila: {fila_actual}");
+            string Nombre = boxRecurso.Text.Split(' ')[0];
+            string Apellido = boxRecurso.Text.Split(' ')[1];
+            string Mes = Calendario.mesToString(calendario.SelectionStart.Month);
+            int Año = calendario.SelectionStart.Year;
+
+            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
+            try
+            {
+                bc.Eliminar(fila_actual, filePath);
+                List<int> dias = bc.getBoldedDates(filePath);
+                calendario.RemoveAllBoldedDates();
+                for (int i = 0; i < dias.Count; i++)
+                {
+                    DateOnly fecha = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, dias[i]);
+                    calendario.AddBoldedDate(fecha.ToDateTime(TimeOnly.MinValue)); 
+                    calendario.UpdateBoldedDates();
+                }
+                limpiarCampos();
+                MessageBox.Show("La tarea se ha eliminado correctamente");
+            }
+            catch (Exception exc) {
+                MessageBox.Show($"Se ha producido un error: {exc.Message}", "Error");
+            }
+        }
+
+        public void limpiarCampos() {
+            boxBanco.SelectedIndex = -1;
+            boxModulo.SelectedIndex = -1;
+            boxtipoTarea.SelectedIndex = -1;
+            txtDecripTarea.Text = "";
+            txtObservaciones.Text = "";
+            horas.Value = 1;
+            minutos.Value = 0;
         }
     }
 }

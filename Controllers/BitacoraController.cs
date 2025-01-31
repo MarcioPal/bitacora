@@ -14,20 +14,20 @@ using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace Bitacora.Controllers
 {
-    internal class BitacoraController
+    public class BitacoraController
     {
+        public FachadaNPOI bitacora = new FachadaNPOI();
+        //public FachadaEPPlus Library = new FachadaEPPlus();
 
         public void registrar(Tarea tarea, List<DateTime> rangoFechas)
         {
-            //FachadaEPPlus obj = new FachadaEPPlus();
-             FachadaNPOI obj = new FachadaNPOI();
             if (tarea.recurso == "")
             {
                 MessageBox.Show("Debe seleccionar un valor en el campo Recurso", "Error");
                 return;
             }
 
-            obj.insertarTarea(tarea, rangoFechas);
+            bitacora.insertarTarea(tarea, rangoFechas);
 
         }
         public void visualizar(string recurso, DateTime fecha)
@@ -112,16 +112,7 @@ namespace Bitacora.Controllers
                 mailItem.Body = $"{saludo}.\n Se adjunta bitacora del mes de {Mes}\nSaludos. ";
                 mailItem.To = "Fernando.Sottano@ar.unisys.com";
                 mailItem.CC = "Maximiliano.Primi@unisys.com";
-                //string filePath = Path.GetFullPath(@"./Bitacora-Palazzo-Marcio-Enero-2025.xlsx");
-
-                /*
-                if (!File.Exists(filePath))
-                {
-                    Console.WriteLine("El archivo no existe: " + filePath);
-                    return;
-                }*/
                 mailItem.Attachments.Add(filePath);
-                //mailItem.Attachments.Add(@"./Bitacora-Palazzo-Marcio-Enero-2025.xlsx"); // Cambia la ruta al archivo real
 
                 mailItem.Display(false); // Mostrar el correo
 
@@ -144,15 +135,16 @@ namespace Bitacora.Controllers
         }
 
         public List<Tarea> leerTareas(string recurso, DateTime fecha) {
-           // FachadaEPPlus obj = new FachadaEPPlus();
-           FachadaNPOI obj = new FachadaNPOI(); 
-            return obj.leerTareas(recurso, fecha);
+
+            return bitacora.leerTareas(recurso, fecha);
         }
-        public List<int> getBoldedDates(Tarea tarea)
+        public List<int> getBoldedDates(string filePath)
         {
-            //FachadaEPPlus obj = new FachadaEPPlus();
-            FachadaNPOI obj = new FachadaNPOI();
-            return obj.getBoldedDates(tarea);
+            return bitacora.getBoldedDates(filePath);
+        }
+
+        public void Eliminar(int nroFila, string filePath) { 
+            bitacora.Eliminar(nroFila, filePath);
         }
     }
 }

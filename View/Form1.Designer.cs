@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MiBitacora));
             tabPage1 = new TabPage();
-            button3 = new Button();
+            btnEliminar = new Button();
+            btnConsultar = new Button();
             button1 = new Button();
             pictureBox1 = new PictureBox();
             boxModulo = new ComboBox();
@@ -65,7 +66,8 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.WhiteSmoke;
-            tabPage1.Controls.Add(button3);
+            tabPage1.Controls.Add(btnEliminar);
+            tabPage1.Controls.Add(btnConsultar);
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(pictureBox1);
             tabPage1.Controls.Add(boxModulo);
@@ -96,19 +98,29 @@
             tabPage1.Text = "Home";
             tabPage1.Click += tabPage1_Click;
             // 
-            // button3
+            // btnEliminar
             // 
-            button3.Location = new Point(43, 375);
-            button3.Name = "button3";
-            button3.Size = new Size(173, 36);
-            button3.TabIndex = 79;
-            button3.Text = "Consultar";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnEliminar.Location = new Point(43, 415);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(173, 36);
+            btnEliminar.TabIndex = 80;
+            btnEliminar.Text = "Eliminar ";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnConsultar
+            // 
+            btnConsultar.Location = new Point(43, 363);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(173, 36);
+            btnConsultar.TabIndex = 79;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(223, 441);
+            button1.Location = new Point(222, 413);
             button1.Name = "button1";
             button1.Size = new Size(173, 38);
             button1.TabIndex = 78;
@@ -161,7 +173,7 @@
             // 
             // btnRegistrar
             // 
-            btnRegistrar.Location = new Point(223, 373);
+            btnRegistrar.Location = new Point(223, 361);
             btnRegistrar.Margin = new Padding(4, 5, 4, 5);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(173, 38);
@@ -211,7 +223,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(43, 441);
+            button2.Location = new Point(126, 459);
             button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
             button2.Size = new Size(173, 38);
@@ -378,6 +390,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button button1;
         private ColorDialog colorDialog1;
-        private Button button3;
+        private Button btnConsultar;
+        private Button btnEliminar;
     }
 }

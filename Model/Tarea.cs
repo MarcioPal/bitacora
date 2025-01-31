@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bitacora.Model
 {
-    internal class Tarea
+    public class Tarea
     {
         public String recurso;
         public String tipoTarea;
@@ -17,6 +17,7 @@ namespace Bitacora.Model
         public int horas;
         public int minutos;
         public DateTime fecha;
+        public int nroFila;
 
         public Tarea(string recurso, string tipoTarea, string banco, string modulo, string descripcion, string obervaciones, int horas, int minutos, DateTime fecha)
         {
@@ -29,6 +30,20 @@ namespace Bitacora.Model
             this.horas = horas;
             this.minutos = minutos;
             this.fecha = fecha;
+
+        }
+        public Tarea(string recurso, string tipoTarea, string banco, string modulo, string descripcion, string obervaciones, int horas, int minutos, DateTime fecha, int nroFila)
+        {
+            this.recurso = recurso;
+            this.tipoTarea = tipoTarea;
+            this.banco = banco;
+            this.modulo = modulo;
+            this.descripcion = descripcion;
+            this.obervaciones = obervaciones;
+            this.horas = horas;
+            this.minutos = minutos;
+            this.fecha = fecha;
+            this.nroFila = nroFila;
 
         }
 

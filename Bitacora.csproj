@@ -12,12 +12,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MiBitacora\**" />
     <Compile Remove="misBitacoras\**" />
+    <Compile Remove="publish\**" />
     <Compile Remove="Utilities\**" />
+    <EmbeddedResource Remove="MiBitacora\**" />
     <EmbeddedResource Remove="misBitacoras\**" />
+    <EmbeddedResource Remove="publish\**" />
     <EmbeddedResource Remove="Utilities\**" />
+    <None Remove="MiBitacora\**" />
     <None Remove="misBitacoras\**" />
+    <None Remove="publish\**" />
     <None Remove="Utilities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="MiBitacora.zip" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +36,6 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
-    <PackageReference Include="EPPlus" Version="7.5.3" />
     <PackageReference Include="MaterialSkin.2.NetCore" Version="2.2.1" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
     <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1004" />

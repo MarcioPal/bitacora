@@ -449,9 +449,6 @@ C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\zh-Hant\System.Wind
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\BouncyCastle.Cryptography.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\CommunityToolkit.WinUI.Notifications.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Enums.NET.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\EPPlus.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\EPPlus.Interfaces.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\EPPlus.System.Drawing.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\ExtendedNumerics.BigDecimal.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Humanizer.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Json.More.dll
@@ -464,15 +461,7 @@ C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Applicati
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.CodeAnalysis.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.Configuration.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.Configuration.FileExtensions.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.Configuration.Json.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.FileProviders.Abstractions.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.FileProviders.Physical.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.ObjectPool.dll
-C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Extensions.Primitives.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\Microsoft.Management.Infrastructure.CimCmdlets.dll
 C:\Users\PalazzoM\OneDrive - Unisys\Desktop\bitacora\publish\microsoft.management.infrastructure.dll

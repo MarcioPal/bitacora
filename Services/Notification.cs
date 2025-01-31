@@ -14,7 +14,7 @@ namespace Bitacora.Services
             string script = $@"
         Install-Module -Name BurntToast -Force -Scope CurrentUser;
         Import-Module BurntToast;
-        $imagePath = '../Resources/icono.ico';
+        $imagePath = './Resources/icono.ico';
         New-BurntToastNotification -Text 'MiBitacora', '{mensaje}' -AppLogo $imagePath;
         ";
 

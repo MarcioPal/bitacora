@@ -11,9 +11,9 @@ using NPOI.XSSF.UserModel;    // Para trabajar con celdas y hojas
 
 namespace Bitacora.Services
 {
-    internal class FachadaNPOI
+    public class FachadaNPOI
     {
-        public static string origen = @"../misBitacoras/template.xls";
+        public static string origen = @"./Resources/template.xls"; 
         public void insertarTarea(Tarea tarea, List<DateTime> rangoFechas)
         {
 
@@ -109,7 +109,6 @@ namespace Bitacora.Services
             string Mes = Calendario.mesToString(fecha.Month);
             List<double> dias = new List<double>();
             string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
-
             List<int> numbers = new List<int>();
             List<Tarea> tareas = new List<Tarea>();
 
@@ -122,8 +121,11 @@ namespace Bitacora.Services
 
                     for (int i = 1; i <= 100; i++) // Asume que la primera fila contiene datos
                     {
-                        IRow row = sheet.GetRow(i);
-                        ICell dia = row.GetCell(0);//.NumericCellValue;
+                        IRow? row = sheet.GetRow(i) ?? null;
+                        ICell dia = null;
+                        if (row != null) {
+                             dia = row.GetCell(0);
+                        }
 
                         if (dia != null)
                         {
@@ -137,9 +139,14 @@ namespace Bitacora.Services
                                                      row.GetCell(9).StringCellValue,
                                                      row.GetCell(3).DateCellValue.Value.Hour,
                                                      row.GetCell(3).DateCellValue.Value.Minute,
-                                                     row.GetCell(3).DateCellValue.Value));
+                                                     row.GetCell(3).DateCellValue.Value,
+                                                     i //nro fila
+                                                     ));
+                                //Debug.WriteLine($"fila nro {tareas[i].nroFila}");
+
                             }
                         }
+
                     }
                 }
             }
@@ -280,15 +287,10 @@ namespace Bitacora.Services
             }
         }
 
-        public List<int> getBoldedDates(Tarea tarea)
+        public List<int> getBoldedDates(string filePath)
         {
-            string[] recurso = tarea.recurso.Split(' ');
-            string Nombre = recurso[0];
-            string Apellido = recurso[1];
-            int Año = tarea.fecha.Year;
-            string Mes = Calendario.mesToString(tarea.fecha.Month);
             List<double> dias = new List<double>();
-            string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
+
 
             List<int> numbers = new List<int>();
 
@@ -320,8 +322,8 @@ namespace Bitacora.Services
             }
             catch (System.IO.IOException ex)
             {
-                FileHandler.cerrarInstancia($"Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls");
-                getBoldedDates(tarea);
+                FileHandler.cerrarInstancia(filePath);
+                getBoldedDates(filePath);
             }
             catch (System.NullReferenceException e)
             {
@@ -329,6 +331,36 @@ namespace Bitacora.Services
 
             }
             return numbers;
+        }
+
+        public void Eliminar(int nroFila, string filePath) {
+
+            using (FileStream fsRead = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                HSSFWorkbook workbook = new HSSFWorkbook(fsRead);
+                ISheet sheet = workbook.GetSheetAt(0);
+                IRow? row = sheet.GetRow(nroFila) ?? null;
+
+                if (row != null)
+                {
+                    // Eliminar la fila
+                    sheet.RemoveRow(row);
+
+                    // Desplazar las filas posteriores hacia arriba
+                    int lastRowNum = sheet.LastRowNum;
+
+                    if (nroFila < lastRowNum)
+                    {
+                        sheet.ShiftRows(nroFila + 1, lastRowNum, -1);
+                    }
+                    using (FileStream fsWrite = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                    {
+                        workbook.Write(fsWrite);
+                    }
+                }
+               
+            }
+           
         }
     }
 }

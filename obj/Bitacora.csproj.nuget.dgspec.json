@@ -55,10 +55,6 @@
               "target": "Package",
               "version": "[7.1.2, )"
             },
-            "EPPlus": {
-              "target": "Package",
-              "version": "[7.5.3, )"
-            },
             "MaterialSkin.2.NetCore": {
               "target": "Package",
               "version": "[2.2.1, )"
