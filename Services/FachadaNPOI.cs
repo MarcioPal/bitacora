@@ -318,7 +318,7 @@ namespace Bitacora.Services
                 }
             }
             catch (FileNotFoundException ex) {
-                File.Copy(origen, filePath, overwrite: true);
+               // File.Copy(origen, filePath, overwrite: true);
             }
             catch (System.IO.IOException ex)
             {
@@ -334,33 +334,44 @@ namespace Bitacora.Services
         }
 
         public void Eliminar(int nroFila, string filePath) {
-
-            using (FileStream fsRead = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            try
             {
-                HSSFWorkbook workbook = new HSSFWorkbook(fsRead);
-                ISheet sheet = workbook.GetSheetAt(0);
-                IRow? row = sheet.GetRow(nroFila) ?? null;
-
-                if (row != null)
+                using (FileStream fsRead = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    // Eliminar la fila
-                    sheet.RemoveRow(row);
+                    HSSFWorkbook workbook = new HSSFWorkbook(fsRead);
+                    ISheet sheet = workbook.GetSheetAt(0);
+                    IRow? row = sheet.GetRow(nroFila) ?? null;
 
-                    // Desplazar las filas posteriores hacia arriba
-                    int lastRowNum = sheet.LastRowNum;
+                    if (row != null)
+                    {
+                        // Eliminar la fila
+                        sheet.RemoveRow(row);
 
-                    if (nroFila < lastRowNum)
-                    {
-                        sheet.ShiftRows(nroFila + 1, lastRowNum, -1);
+                        // Desplazar las filas posteriores hacia arriba
+                        int lastRowNum = sheet.LastRowNum;
+
+                        if (nroFila < lastRowNum)
+                        {
+                            sheet.ShiftRows(nroFila + 1, lastRowNum, -1);
+                        }
+                        using (FileStream fsWrite = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                        {
+                            workbook.Write(fsWrite);
+                        }
                     }
-                    using (FileStream fsWrite = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                    {
-                        workbook.Write(fsWrite);
-                    }
+
                 }
-               
             }
-           
+            catch (FileNotFoundException ex) { 
+                
+            }
+            catch (System.IO.IOException ex)
+            {
+                FileHandler.cerrarInstancia(filePath);
+                Eliminar(nroFila, filePath);
+            }
         }
+           
     }
 }
+
