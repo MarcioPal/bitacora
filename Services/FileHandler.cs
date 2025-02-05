@@ -94,9 +94,9 @@ namespace Bitacora.Services
             }
 
         }
-        public static void cerrarInstancia(string name)
+        public static void cerrarInstancia(string path)
         {
-
+            string name = path.Substring(16);
             //string excelFileName = "Bitacora-Palazzo-Marcio-Enero-2025.xlsx";
 
             foreach (var process in Process.GetProcessesByName("EXCEL"))
