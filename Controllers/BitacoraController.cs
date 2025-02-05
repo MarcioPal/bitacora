@@ -23,8 +23,7 @@ namespace Bitacora.Controllers
         {
             if (tarea.recurso == "")
             {
-                MessageBox.Show("Debe seleccionar un valor en el campo Recurso", "Error");
-                return;
+                throw new Exception("Debe seleccionar un valor en el campo Recurso");
             }
 
             bitacora.insertarTarea(tarea, rangoFechas);
@@ -135,7 +134,10 @@ namespace Bitacora.Controllers
         }
 
         public List<Tarea> leerTareas(string recurso, DateTime fecha) {
-
+            if (recurso == "")
+            {
+               throw new Exception("Debe seleccionar un valor en el campo Recurso");
+            }
             return bitacora.leerTareas(recurso, fecha);
         }
         public List<int> getBoldedDates(string filePath)

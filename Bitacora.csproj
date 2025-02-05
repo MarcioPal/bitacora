@@ -15,23 +15,23 @@
     <Compile Remove="MiBitacora\**" />
     <Compile Remove="misBitacoras\**" />
     <Compile Remove="publish\**" />
+    <Compile Remove="Resources\**" />
     <Compile Remove="Utilities\**" />
     <EmbeddedResource Remove="MiBitacora\**" />
     <EmbeddedResource Remove="misBitacoras\**" />
     <EmbeddedResource Remove="publish\**" />
+    <EmbeddedResource Remove="Resources\**" />
     <EmbeddedResource Remove="Utilities\**" />
     <None Remove="MiBitacora\**" />
     <None Remove="misBitacoras\**" />
     <None Remove="publish\**" />
+    <None Remove="Resources\**" />
     <None Remove="Utilities\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="enviar.ps1" />
     <None Remove="MiBitacora.zip" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\icono.ico" />
   </ItemGroup>
 
   <ItemGroup>
