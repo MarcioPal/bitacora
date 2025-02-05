@@ -54,7 +54,6 @@
             boxtipoTarea = new ComboBox();
             calendario = new MonthCalendar();
             tabControl1 = new TabControl();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             colorDialog1 = new ColorDialog();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -164,11 +163,11 @@
             // minutos
             // 
             minutos.Increment = new decimal(new int[] { 5, 0, 0, 0 });
-            minutos.Location = new Point(867, 380);
+            minutos.Location = new Point(875, 382);
             minutos.Margin = new Padding(4, 5, 4, 5);
             minutos.Maximum = new decimal(new int[] { 55, 0, 0, 0 });
             minutos.Name = "minutos";
-            minutos.Size = new Size(171, 31);
+            minutos.Size = new Size(187, 31);
             minutos.TabIndex = 75;
             // 
             // btnRegistrar
@@ -212,12 +211,12 @@
             // 
             // horas
             // 
-            horas.Location = new Point(687, 380);
+            horas.Location = new Point(685, 384);
             horas.Margin = new Padding(4, 5, 4, 5);
             horas.Maximum = new decimal(new int[] { 24, 0, 0, 0 });
             horas.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             horas.Name = "horas";
-            horas.Size = new Size(171, 31);
+            horas.Size = new Size(187, 31);
             horas.TabIndex = 40;
             horas.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -387,7 +386,6 @@
         private MonthCalendar calendario;
         private TabControl tabControl1;
         private PictureBox pictureBox1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button button1;
         private ColorDialog colorDialog1;
         private Button btnConsultar;

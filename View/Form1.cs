@@ -23,18 +23,6 @@ namespace Bitacora
             InitializeComponent();
             fechaElegida = calendario.SelectionStart;
 
-            backgroundWorker1 = new BackgroundWorker
-            {
-                WorkerReportsProgress = true,
-                WorkerSupportsCancellation = true
-            };
-
-            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
-            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
-            backgroundWorker1.RunWorkerAsync();
-
-            //BitacoraController bc = new BitacoraController();
             List<int> dias = new List<int>();
             DateTime dateTime = DateTime.Now;
             FileHandler fh = new FileHandler();
@@ -49,7 +37,11 @@ namespace Bitacora
 
                 string filePath = $"../misBitacoras/Bitacora-{Apellido}-{Nombre}-{Mes}-{Año}.xls";
                 tarea.fecha = DateTime.Now;
-                dias = bc.getBoldedDates(filePath);
+                try
+                {
+                    dias = bc.getBoldedDates(filePath);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
                 //dias.Add(15);
                 //dias.Add(16);
                 for (int i = 0; i < dias.Count; i++)
@@ -62,11 +54,32 @@ namespace Bitacora
 
                 fh.cargarTarea(boxRecurso, boxtipoTarea, boxBanco, boxModulo, txtDecripTarea, txtObservaciones, horas, minutos, tarea);
             }
+            iniciarNotificaciones();
         }
 
+        public void iniciarNotificaciones() {
 
+            bool isRunning = Process.GetProcessesByName("BitacoraNotifications").Any();
+            Debug.WriteLine(isRunning);
+            if (!isRunning)
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = "BitacoraNotifications.exe",
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using (Process process = new Process { StartInfo = startInfo })
+                {
+                    process.Start();
+
+                }
+            }
+        }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+
             string currentDirectory = Directory.GetCurrentDirectory();
             Debug.WriteLine($"El directorio de trabajo actual es: {currentDirectory}");
             DateTime fechatarea = calendario.SelectionStart;
@@ -96,19 +109,29 @@ namespace Bitacora
             }
             // Debug.WriteLine(startDate);
             //Debug.WriteLine(endDate);
-            bc.registrar(tarea, rangoFechas);
-
-            //Marca en negrita las fechas registradas
-            for (DateTime fecha = startDate; fecha <= endDate; fecha = fecha.AddDays(1))
+            try
             {
+                if (boxBanco.Text == "" || boxModulo.Text == "" || boxtipoTarea.Text == "" || txtDecripTarea.Text == "")
+                {
+                    throw new Exception("Debe completar todos los campos obligatorios");
+                }
+                bc.registrar(tarea, rangoFechas);
 
-                calendario.AddBoldedDate(fecha);
-                calendario.UpdateBoldedDates();
+                //Marca en negrita las fechas registradas
+                for (DateTime fecha = startDate; fecha <= endDate; fecha = fecha.AddDays(1))
+                {
+
+                    calendario.AddBoldedDate(fecha);
+                    calendario.UpdateBoldedDates();
+                }
+                txtDecripTarea.Text = "";
+                txtObservaciones.Text = "";
+                horas.Value = 1;
+                minutos.Value = 0;
             }
-            txtDecripTarea.Text = "";
-            txtObservaciones.Text = "";
-            horas.Value = 1;
-            minutos.Value = 0;
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message,"Error");
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -117,54 +140,6 @@ namespace Bitacora
         }
 
         private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
-        {
-
-        }
-
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-
-
-            while (true)
-            {
-                string nombre = FileHandler.getNombre();
-                if (nombre != "")
-                {
-                    Services.Notification.enviarNotificacion($"{nombre} no olvides registrar tus tareas diarias en la bitacora!");
-                }
-                else
-                {
-                    Services.Notification.enviarNotificacion($"No olvides registrar tus tareas diarias en la bitacora!");
-                }
-
-                DateTime hoy = DateTime.Now;
-                int mes = hoy.Month;
-                if (hoy.Month == 2)
-                {
-                    if (hoy.Day == 28) { Services.Notification.enviarNotificacion("Recuerda enviar la Bitacora antes de que finalice el mes!"); }
-
-                }
-                else
-                {
-                    if (hoy.Month == 4 || hoy.Month == 6 || hoy.Month == 9 || hoy.Month == 11)
-                    {
-                        if (hoy.Day == 30) { Services.Notification.enviarNotificacion("Recuerda enviar la Bitacora antes de que finalice el mes!"); }
-                    }
-                    else
-                    {
-                        if (hoy.Day == 31) { Services.Notification.enviarNotificacion("Recuerda enviar la Bitacora antes de que finalice el mes!"); }
-                    }
-                }
-
-                Thread.Sleep(10800000);
-            }
-        }
-
-        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-
-        }
-        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
 
         }
@@ -289,12 +264,12 @@ namespace Bitacora
         {
 
             consul_clicks += 1;
-           // BitacoraController bc = new BitacoraController();
-            List<Tarea> tareas = bc.leerTareas(boxRecurso.Text, calendario.SelectionStart);
-            if (consul_clicks > tareas.Count) { consul_clicks = 1; }
-
+            // BitacoraController bc = new BitacoraController();
             try
             {
+                List<Tarea> tareas = bc.leerTareas(boxRecurso.Text, calendario.SelectionStart);
+                if (consul_clicks > tareas.Count) { consul_clicks = 1; }
+
                 boxRecurso.SelectedItem = tareas[consul_clicks - 1].recurso;
                 boxtipoTarea.SelectedItem = tareas[consul_clicks - 1].tipoTarea;
                 boxBanco.SelectedItem = tareas[consul_clicks - 1].banco;
@@ -308,6 +283,9 @@ namespace Bitacora
             catch (System.ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show("No hay tareas registradas para la fecha seleccionada.", "Error");
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message,"Error");
             }
 
         }
@@ -326,6 +304,7 @@ namespace Bitacora
                 bc.Eliminar(fila_actual, filePath);
                 List<int> dias = bc.getBoldedDates(filePath);
                 calendario.RemoveAllBoldedDates();
+                calendario.UpdateBoldedDates();
                 for (int i = 0; i < dias.Count; i++)
                 {
                     DateOnly fecha = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, dias[i]);
